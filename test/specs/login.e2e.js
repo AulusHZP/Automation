@@ -12,6 +12,8 @@ describe("Login Functionality on Mobile App", () => {
         // Validate unsuccessful login
         const errorMessage = await $('//android.widget.TextView[@text="Username and password do not match any user in this service."]');
         await expect(errorMessage).toHaveText("Username and password do not match any user in this service.");
+
+        console.log("Error message validated successfully");
     });
 
     it('should login successfully with valid credentials', async () => {
@@ -26,5 +28,8 @@ describe("Login Functionality on Mobile App", () => {
         // Validate successful login
         const productsScreen = await $("~test-PRODUCTS");
         await expect(productsScreen).toBeDisplayed();
+
+        console.log("Login successful");
+
     });
 });
