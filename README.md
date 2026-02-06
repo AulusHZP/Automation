@@ -66,7 +66,17 @@ npx wdio run ./wdio.conf.js --spec ./test/specs/login.e2e.js
 
 **E2E Checkout Tests:**
 ```bash
-npx wdio run ./wdio.conf.js --spec ./test/specs/e2e-checkout.e2e.js
+npx wdio run ./wdio.conf.js --spec ./test/specs/checkout.e2e.js
+```
+
+**Geolocation Tests:**
+```bash
+npx wdio run ./wdio.conf.js --spec ./test/specs/geolocation.e2e.js
+```
+
+**Webview Tests:**
+```bash
+npx wdio run ./wdio.conf.js --spec ./test/specs/webview.e2e.js
 ```
 
 ## Project Structure
@@ -76,14 +86,11 @@ Automation/
 ├── app/
 │   └── android/              # Android APK files
 ├── test/
-│   ├── pageobjects/          # Page Object Models
-│   │   ├── login.page.js
-│   │   ├── page.js
-│   │   └── secure.page.js
 │   └── specs/                # Test specifications
 │       ├── login.e2e.js      # Login validation tests
-│       ├── e2e-checkout.e2e.js  # E2E checkout flow tests
-│       └── test.e2e.js       # Additional tests
+│       ├── checkout.e2e.js   # E2E checkout flow tests
+│       ├── geolocation.e2e.js # Geolocation feature tests
+│       └── webview.e2e.js    # Webview feature tests
 ├── wdio.conf.js              # WebdriverIO configuration
 └── package.json
 ```
@@ -94,12 +101,23 @@ Automation/
 - Validates error message with invalid credentials
 - Validates successful login with valid credentials
 
-### E2E Checkout Flow (`e2e-checkout.e2e.js`)
+### E2E Checkout Flow (`checkout.e2e.js`)
 - Login with valid credentials
 - Navigate through all menu categories (Webview, QR Code, Geo Location, Drawing, About)
 - Add product to cart
 - Navigate to checkout
 - Fill shipping information (without completing purchase)
+
+### Geolocation Tests (`geolocation.e2e.js`)
+- Login with valid credentials
+- Open side menu and navigate to Geolocation screen
+- Validate geolocation functionality and map display
+
+### Webview Tests (`webview.e2e.js`)
+- Login with valid credentials
+- Open side menu and navigate to Webview screen
+- Enter a URL and load web content in the app
+- Validate webview functionality
 
 ## Configuration
 

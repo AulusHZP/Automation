@@ -47,7 +47,7 @@ export const config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -59,9 +59,11 @@ export const config = {
         "appium:platformVersion": '12',
         "appium:automationName": 'UIAutomator2',
         "appium:app": androidAppPath,
-        "appium:noReset": false,
+        "appium:noReset": true,
         "appium:fullReset": false,
-        "appium:appWaitActivity": "*"
+        "appium:appWaitActivity": "*",
+        "appium:newCommandTimeout": 240,
+        "appium:autoGrantPermissions": true
 }],
 
     //

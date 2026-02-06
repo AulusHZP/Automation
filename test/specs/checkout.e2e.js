@@ -1,6 +1,6 @@
 describe("TC_E2E_001 - Login + Menu Navigation + Add to Cart + Checkout", () => {
-    
-    // Helper function to open the menu
+
+    // Helper function
     async function openMenu() {
         const menuButton = await $("~test-Menu");
         await menuButton.waitForDisplayed({ timeout: 10000 });
@@ -19,14 +19,14 @@ describe("TC_E2E_001 - Login + Menu Navigation + Add to Cart + Checkout", () => 
         await usernameField.waitForDisplayed({ timeout: 10000 });
         await usernameField.click();
         await usernameField.setValue("standard_user");
-        
+
         const passwordField = await $("~test-Password");
         await passwordField.click();
         await passwordField.setValue("secret_sauce");
-        
+
         const loginButton = await $("~test-LOGIN");
         await loginButton.click();
-        
+
         const productsScreen = await $("~test-PRODUCTS");
         await productsScreen.waitForDisplayed({ timeout: 10000 });
         await expect(productsScreen).toBeDisplayed();
@@ -35,7 +35,7 @@ describe("TC_E2E_001 - Login + Menu Navigation + Add to Cart + Checkout", () => 
     // Step 3: Open the side menu
     it('should open the side menu', async () => {
         await openMenu();
-        
+
         const allItemsOption = await $("~test-ALL ITEMS");
         await allItemsOption.waitForDisplayed({ timeout: 5000 });
         await expect(allItemsOption).toBeDisplayed();
@@ -64,7 +64,7 @@ describe("TC_E2E_001 - Login + Menu Navigation + Add to Cart + Checkout", () => 
     it('should navigate to Geo Location screen', async () => {
         await goBack();
         await openMenu();
-        
+
         const geoLocationOption = await $("~test-GEO LOCATION");
         await geoLocationOption.waitForDisplayed({ timeout: 5000 });
         await geoLocationOption.click();
@@ -75,7 +75,7 @@ describe("TC_E2E_001 - Login + Menu Navigation + Add to Cart + Checkout", () => 
     it('should navigate to Drawing screen', async () => {
         await goBack();
         await openMenu();
-        
+
         const drawingOption = await $("~test-DRAWING");
         await drawingOption.waitForDisplayed({ timeout: 2000 });
         await drawingOption.click();
@@ -86,7 +86,7 @@ describe("TC_E2E_001 - Login + Menu Navigation + Add to Cart + Checkout", () => 
     it('should navigate to About screen', async () => {
         await goBack();
         await openMenu();
-        
+
         const aboutOption = await $("~test-ABOUT");
         await aboutOption.waitForDisplayed({ timeout: 2000 });
         await aboutOption.click();
@@ -97,11 +97,11 @@ describe("TC_E2E_001 - Login + Menu Navigation + Add to Cart + Checkout", () => 
     it('should navigate back to All Items screen', async () => {
         await goBack();
         await openMenu();
-        
+
         const allItemsOption = await $("~test-ALL ITEMS");
         await allItemsOption.waitForDisplayed({ timeout: 2000 });
         await allItemsOption.click();
-        
+
         const productsScreen = await $("~test-PRODUCTS");
         await productsScreen.waitForDisplayed({ timeout: 2000 });
         await expect(productsScreen).toBeDisplayed();
@@ -112,7 +112,7 @@ describe("TC_E2E_001 - Login + Menu Navigation + Add to Cart + Checkout", () => 
         const addToCartButton = await $("~test-ADD TO CART");
         await addToCartButton.waitForDisplayed({ timeout: 2000 });
         await addToCartButton.click();
-        
+
         // Validate that the cart shows item
         const cartBadge = await $("~test-Cart");
         await expect(cartBadge).toBeDisplayed();
@@ -123,7 +123,7 @@ describe("TC_E2E_001 - Login + Menu Navigation + Add to Cart + Checkout", () => 
         const cartButton = await $("~test-Cart");
         await cartButton.waitForDisplayed({ timeout: 2000 });
         await cartButton.click();
-        
+
         const checkoutButton = await $("~test-CHECKOUT");
         await checkoutButton.waitForDisplayed({ timeout: 2000 });
         await expect(checkoutButton).toBeDisplayed();
@@ -133,7 +133,7 @@ describe("TC_E2E_001 - Login + Menu Navigation + Add to Cart + Checkout", () => 
     it('should start the checkout process', async () => {
         const checkoutButton = await $("~test-CHECKOUT");
         await checkoutButton.click();
-        
+
 
         const firstNameField = await $("~test-First Name");
         await firstNameField.waitForDisplayed({ timeout: 2000 });
@@ -144,13 +144,12 @@ describe("TC_E2E_001 - Login + Menu Navigation + Add to Cart + Checkout", () => 
     it('should fill checkout info and proceed without finishing', async () => {
         const firstNameField = await $("~test-First Name");
         await firstNameField.setValue("Aulus");
-        
+
         const lastNameField = await $("~test-Last Name");
         await lastNameField.setValue("Test");
-        
+
         const zipCodeField = await $("~test-Zip/Postal Code");
         await zipCodeField.setValue("12345");
-        
 
         console.log("Checkout accessed successfully - Purchase NOT completed");
     });
